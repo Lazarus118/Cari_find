@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:padding="5dp"
+        android:background="@drawable/side_nav_bar"
+        android:text="Welcome to BudgEat for Business mobile App"/>
+
+    <TextView
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="Below is a quick Illustration, demonstrating the use of BudgEat mobile Loyalty system."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#666"
+        android:id="@+id/about"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#ddd"/>
+
+    <ImageView
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/illustration"
+        android:id="@+id/imageView2" />
+
+
+</LinearLayout>
