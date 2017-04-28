@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@drawable/side_nav_bar"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="107dp"
+        android:layout_height="70dp"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"/>
+        <!--android:src="@drawable/shop_net_logo"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:text="Support"
+        android:paddingBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#FFF"/>
+
+    <TextView
+        android:onClick="email_click"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="10dp"
+        android:padding="5dp"
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: info@carifind.com"/>
+
+    <TextView
+        android:onClick="whatsapp_click"
+        android:drawableLeft="@drawable/ic_whatsapp"
+        android:drawableStart="@drawable/ic_whatsapp"
+        android:drawablePadding="10dp"
+        android:padding="5dp"
+        android:id="@+id/whatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact w/ whatsapp: (767) 255-7815"/>
+
+    <TextView
+        android:onClick="call_click"
+        android:drawableLeft="@drawable/ic_contact"
+        android:drawableStart="@drawable/ic_contact"
+        android:drawablePadding="10dp"
+        android:padding="5dp"
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact: (767) 255-7815"/>
+
+</LinearLayout>
