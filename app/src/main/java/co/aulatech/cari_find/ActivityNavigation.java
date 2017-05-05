@@ -1,10 +1,13 @@
 package co.aulatech.cari_find;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,12 +22,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.robinhood.ticker.TickerUtils;
 import com.robinhood.ticker.TickerView;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ActivityNavigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView electricity, visit_times, current_weather, area_code, currency;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class ActivityNavigation extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         /*******************************************************/
+        // -------------------------------------------
+        checkAndRequestPermissions();
         // -------------------------------------------
         final TickerView tickerView = (TickerView) findViewById(R.id.tickerView);
         tickerView.setCharacterList(TickerUtils.getDefaultNumberList());
@@ -137,6 +146,28 @@ public class ActivityNavigation extends AppCompatActivity
                 return false;
             }
         });
+    }
+
+    /**********************************************************************************
+     * ASK FOR PERMISSION LOGIC
+     *********************************************************************************/
+    private boolean checkAndRequestPermissions() {
+        int loc = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        int loc2 = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (loc2 != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (loc != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray
+                    (new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
     }
 
     /**********************************************************************************

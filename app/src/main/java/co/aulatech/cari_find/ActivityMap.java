@@ -2,7 +2,6 @@ package co.aulatech.cari_find;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,10 +36,12 @@ public class ActivityMap extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.getUiSettings().setZoomGesturesEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng trafalgar_falls = new LatLng(-61.33, 15.32);
+        mMap.addMarker(new MarkerOptions().position(trafalgar_falls).title("Trafalgar Falls"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(trafalgar_falls));
     }
 }
