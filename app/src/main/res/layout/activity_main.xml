@@ -19,7 +19,7 @@
         app:menu="@menu/activity_main_drawer"/>
 
     <include
-        layout="@layout/page_main_dominica"
+        layout="@layout/activity_main_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

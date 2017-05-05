@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:titleTextColor="#fff"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#86c6c0"
+        android:drawableLeft="@drawable/ic_new"
+        android:drawableStart="@drawable/ic_new"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:ticker_animationDuration="1500"/>
+
+    <ScrollView
+        android:background="#86c6c0"
+        android:layout_width="match_parent"
+        android:layout_height="960dp"
+        android:layout_weight="0.75">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/sea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|center"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/sea"/>
+
+                <TextView
+                    android:id="@+id/guadeloupe_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="300dp"
+                    android:text="Guadeloupe"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/dominica_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="450dp"
+                    android:text="Dominica"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/dominica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="400dp"
+                    android:src="@drawable/dominica"/>
+
+                <TextView
+                    android:id="@+id/martinique_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="125dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="700dp"
+                    android:text="Martinique"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/martinique"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="600dp"
+                    android:src="@drawable/martinique"/>
+
+                <TextView
+                    android:id="@+id/st_lucia_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="125dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="850dp"
+                    android:text="St Lucia"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/st_lucia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="800dp"
+                    android:src="@drawable/st_lucia"/>
+
+                <ImageView
+                    android:id="@+id/guadeloupe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/guadeloupe"
+                    android:layout_alignBottom="@+id/dominica_txt"
+                    android:layout_alignLeft="@+id/dominica"
+                    android:layout_alignStart="@+id/dominica"
+                    android:layout_marginBottom="88dp"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#DDD"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:padding="2dp"
+        android:text="ESSENTIAL INFORMATION AT A GLANCE"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:paddingBottom="2dp"
+        android:gravity="left|center"
+        android:drawableLeft="@drawable/ic_long_press"
+        android:drawableStart="@drawable/ic_long_press"
+        android:text="LONG-PRESS on an Island for Important travel tips"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#DDD"/>
+
+
+    <LinearLayout
+        android:paddingTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_electricity"/>
+
+            <TextView
+                android:gravity="center"
+                android:text="ELECTRICITY"
+                android:textSize="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView10"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center|top"
+                android:text="0/0hz"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/electricity_data"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/imageView11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_slipper"/>
+
+            <TextView
+                android:gravity="center"
+                android:text="BEST TIME TO GO"
+                android:textSize="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView11"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center|top"
+                android:text="CLIMATE"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/visit_times_data"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/imageView12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_weather"/>
+
+            <TextView
+                android:gravity="center"
+                android:text="CURRENT WEATHER"
+                android:textSize="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView13"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center|top"
+                android:text="0C/0F"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/current_weather_data"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/imageView13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_phone_code"/>
+
+            <TextView
+                android:gravity="center"
+                android:text="AREA CODE"
+                android:textSize="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView15"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center|top"
+                android:text="000"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/area_code_data"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/imageView14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_currency"/>
+
+            <TextView
+                android:gravity="center"
+                android:text="CURRENCY"
+                android:textSize="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView17"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center|top"
+                android:text="$0.00"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/currency_data"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

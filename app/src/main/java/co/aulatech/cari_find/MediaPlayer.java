@@ -11,6 +11,10 @@ public class MediaPlayer extends MediaPlayerActivity {
         this.mVRLibrary = mVRLibrary;
     }
 
+    public MediaPlayer() {
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
