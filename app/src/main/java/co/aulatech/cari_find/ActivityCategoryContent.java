@@ -61,8 +61,12 @@ public class ActivityCategoryContent extends AppCompatActivity
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                Intent category_to_map = new Intent(ActivityCategoryContent.this, ActivityMap.class);
-                ActivityCategoryContent.this.startActivity(category_to_map);
+//                Intent category_to_map = new Intent(ActivityCategoryContent.this, ActivityMap.class);
+//                ActivityCategoryContent.this.startActivity(category_to_map);
+
+                Intent category_to_map = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:q=an+trafalgar falls, paillotte road+roseau"));
+                startActivity(category_to_map);
             }
         });
     }
@@ -70,10 +74,14 @@ public class ActivityCategoryContent extends AppCompatActivity
     private ArrayList<DataObject> getDataSet() {
         ArrayList results = new ArrayList<>();
         for (int index = 0; index < 20; index++) {
-            DataObject obj = new DataObject(index + "." + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis sapien arcu. Curabitur dapibus elementum nisi. Nunc commodo aliquam neque sed iaculis.",
+            DataObject obj = new DataObject("" + index + "." + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis sapien arcu. Curabitur dapibus elementum nisi. Nunc commodo aliquam neque sed iaculis.",
                     "........." );
             results.add(index, obj);
         }
+        DataObject first_obj = new DataObject("" + 0 + "." + " TRAFALGAR FALLS.\nSituated east of the picturesque village of Trafalgar is one of Dominica's most popular natural attractions: the Trafalgar Falls.",
+                "........." );
+        results.add(0, first_obj);
+
         return results;
     }
 
