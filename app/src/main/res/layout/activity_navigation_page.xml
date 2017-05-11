@@ -19,18 +19,26 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
     </android.support.design.widget.AppBarLayout>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#FFF"/>
+
     <com.robinhood.ticker.TickerView
         android:id="@+id/tickerView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#86c6c0"
-        android:drawableLeft="@drawable/ic_new"
-        android:drawableStart="@drawable/ic_new"
         android:gravity="center"
         android:textColor="#FFF"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:ticker_animationDuration="1500"/>
+        app:ticker_animationDuration="2000"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#FFF"/>
 
     <ScrollView
         android:background="#86c6c0"

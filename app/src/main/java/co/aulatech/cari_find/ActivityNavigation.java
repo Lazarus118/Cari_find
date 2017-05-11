@@ -166,7 +166,7 @@ public class ActivityNavigation extends AppCompatActivity
                             }
                         }
                         tickerView.setCharacterList(alphabetlist);
-                        String[] ticker_content = {"Dominica to develop new bridge", "St. Lucia builds new pier on the beach", "Jamaica's Bold wins again"};
+                        String[] ticker_content = {"Bahamas opposition wins landslide election victory", "Guyana tourism hub potential is at Ogle not Cheddi Jagan airport, study reveals", "Royal Caribbean opens first year-long program to Cuba"};
                         int idx = new Random().nextInt(ticker_content.length);
                         Random r = new Random();
                         tickerView.setText(generateChars(r, alphabetlist, 0) + ticker_content[idx]);
