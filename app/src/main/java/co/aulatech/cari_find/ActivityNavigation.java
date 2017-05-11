@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.robinhood.ticker.TickerUtils;
 import com.robinhood.ticker.TickerView;
-
+import android.os.Handler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -32,6 +32,8 @@ public class ActivityNavigation extends AppCompatActivity
 
     TextView electricity, visit_times, current_weather, area_code, currency;
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private char[] alphabetlist;
+    TickerView tickerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +54,8 @@ public class ActivityNavigation extends AppCompatActivity
         // -------------------------------------------
         checkAndRequestPermissions();
         // -------------------------------------------
-        final TickerView tickerView = (TickerView) findViewById(R.id.tickerView);
-        tickerView.setCharacterList(TickerUtils.getDefaultNumberList());
-        String[] ticker_content = {"Dominica to develop new bridge", "St. Lucia builds new pier on the beach", "Jamaica's Bold wins again"};
-        int idx = new Random().nextInt(ticker_content.length);
-        tickerView.setText(ticker_content[idx]);
+        tickerView = (TickerView) findViewById(R.id.tickerView);
+        setRandomText();
         // -------------------------------------------
         electricity = (TextView) findViewById(R.id.electricity_data);
         visit_times = (TextView) findViewById(R.id.visit_times_data);
@@ -147,6 +146,45 @@ public class ActivityNavigation extends AppCompatActivity
             }
         });
     }
+
+    /**********************************************************************************
+     * TICKER LOGIC
+     *********************************************************************************/
+    public void setRandomText() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        alphabetlist = new char[53];
+                        alphabetlist[0] = TickerUtils.EMPTY_CHAR;
+                        for (int i = 0; i < 2; i++) {
+                            for (int j = 0; j < 26; j++) {
+                                // Add all lowercase characters first, then add the uppercase characters.
+                                alphabetlist[1 + i * 26 + j] = (char) ((i == 0) ? j + 97 : j + 65);
+                            }
+                        }
+                        tickerView.setCharacterList(alphabetlist);
+                        String[] ticker_content = {"Dominica to develop new bridge", "St. Lucia builds new pier on the beach", "Jamaica's Bold wins again"};
+                        int idx = new Random().nextInt(ticker_content.length);
+                        Random r = new Random();
+                        tickerView.setText(generateChars(r, alphabetlist, 0) + ticker_content[idx]);
+                        handler.postDelayed(this, 2000);
+                    }
+                });
+            }
+        }, 2000);
+    }
+
+    private String generateChars(Random random, char[] list, int numDigits) {
+        final char[] result = new char[numDigits];
+        for (int i = 0; i < numDigits; i++) {
+            result[i] = list[random.nextInt(list.length)];
+        }
+        return new String(result);
+    }
+
 
     /**********************************************************************************
      * ASK FOR PERMISSION LOGIC

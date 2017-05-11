@@ -1,6 +1,5 @@
 package co.aulatech.cari_find;
 
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class MyRecyclerViewAdapter extends RecyclerView
@@ -27,7 +25,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            // img = (ImageView) itemView.findViewById(R.id.imageView3);
+            img = (ImageView) itemView.findViewById(R.id.list_image);
             label = (TextView) itemView.findViewById(R.id.textView);
             dateTime = (TextView) itemView.findViewById(R.id.textView2);
             Log.i(LOG_TAG, "Adding Listener");
@@ -60,7 +58,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        //holder.img.setImageResource(mDataset.get(position).getmImage1());
+        holder.img.setImageBitmap(mDataset.get(position).getmImage1());
         holder.label.setText(mDataset.get(position).getmText1());
         holder.dateTime.setText(mDataset.get(position).getmText2());
     }

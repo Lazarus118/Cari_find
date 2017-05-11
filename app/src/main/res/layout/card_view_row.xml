@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <TextView
+            <!-- <TextView
                 android:drawableLeft="@drawable/ic_picture"
                 android:drawableStart="@drawable/ic_picture"
                 android:drawablePadding="1dp"
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:gravity="start|center"
+                android:gravity="end|center"
                 android:textStyle="bold"/>
 
             <TextView
@@ -37,8 +37,31 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView"
                 android:gravity="center"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"/> -->
+
+            <ImageView
+                android:id="@+id/list_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                card_view:srcCompat="@drawable/ic_picture" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:text="faafafafasfasfafafasafafa"
+                android:id="@+id/textView2"
+                android:layout_alignBottom="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textView"
+                android:gravity="center" />
         </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 
 
