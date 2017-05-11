@@ -2,8 +2,11 @@ package co.aulatech.cari_find;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +21,16 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ActivityCategoryContent extends AppCompatActivity
@@ -25,6 +38,7 @@ public class ActivityCategoryContent extends AppCompatActivity
 
     private RecyclerView.Adapter mAdapter;
     private static String LOG_TAG = "CardViewActivity";
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +52,7 @@ public class ActivityCategoryContent extends AppCompatActivity
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(getDataSet());
+        // mAdapter = new MyRecyclerViewAdapter(getDataSet());
         mRecyclerView.setAdapter(mAdapter);
         /*******************************************************/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -61,8 +75,6 @@ public class ActivityCategoryContent extends AppCompatActivity
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-//                Intent category_to_map = new Intent(ActivityCategoryContent.this, ActivityMap.class);
-//                ActivityCategoryContent.this.startActivity(category_to_map);
 
                 Intent category_to_map = new Intent(android.content.Intent.ACTION_VIEW,
                         Uri.parse("google.navigation:q=an+trafalgar falls, paillotte road+roseau"));
@@ -71,18 +83,37 @@ public class ActivityCategoryContent extends AppCompatActivity
         });
     }
 
-    private ArrayList<DataObject> getDataSet() {
-        ArrayList results = new ArrayList<>();
-        for (int index = 0; index < 20; index++) {
-            DataObject obj = new DataObject("" + index + "." + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis sapien arcu. Curabitur dapibus elementum nisi. Nunc commodo aliquam neque sed iaculis.",
-                    "........." );
-            results.add(index, obj);
-        }
-        DataObject first_obj = new DataObject("" + 0 + "." + " TRAFALGAR FALLS.\nSituated east of the picturesque village of Trafalgar is one of Dominica's most popular natural attractions: the Trafalgar Falls.",
-                "........." );
-        results.add(0, first_obj);
+    private void getDataSet() throws IOException {
+        final ImageView list_image = (ImageView) findViewById(R.id.list_image);
+        /*******************************************************/
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        final File localFile = File.createTempFile("images", "jpg");
+        mStorageRef.getFile(localFile)
+                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        list_image.setImageBitmap(bitmap);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle failed download
+                // ...
+            }
+        });
 
-        return results;
+//        ArrayList results = new ArrayList<>();
+//        for (int index = 0; index < 20; index++) {
+//            DataObject obj = new DataObject(list_image + "" + index + "." + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis sapien arcu. Curabitur dapibus elementum nisi. Nunc commodo aliquam neque sed iaculis.",
+//                    "........." );
+//            results.add(index, obj);
+//        }
+//        DataObject first_obj = new DataObject(list_image + "" + 0 + "." + " TRAFALGAR FALLS.\nSituated east of the picturesque village of Trafalgar is one of Dominica's most popular natural attractions: the Trafalgar Falls.",
+//                "........." );
+//        results.add(0, first_obj);
+//
+//        return results;
     }
 
     /**********************************************************************************
