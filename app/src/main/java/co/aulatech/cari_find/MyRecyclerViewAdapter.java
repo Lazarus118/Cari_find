@@ -58,7 +58,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.img.setImageBitmap(mDataset.get(position).getmImage1());
+        holder.img.setImageResource(mDataset.get(position).getmImage1());
         holder.label.setText(mDataset.get(position).getmText1());
         holder.dateTime.setText(mDataset.get(position).getmText2());
     }
